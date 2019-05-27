@@ -20,12 +20,7 @@ int main() {
 	b = N[1] + N[2] + N[4];
 
 
-	if (a > b) {
-		cout << a << endl;
-	}
-	else {
-		cout << b << endl;
-	}
+	cout << max(a, b) << endl;
 
 
 	return 0;
