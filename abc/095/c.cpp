@@ -12,41 +12,19 @@ using namespace std;
 
 
 
-
-
 int main() {
 
-	int A, B, C, X, Y;
-	int ans = 0;
+	int A, B, C, X, Y, cost;
+	int mincost = 6000000000;
 	cin >> A >> B >> C >> X >> Y;
-	pair<int, int> pa, pb;
-	pa.first = A;
-	pa.second = X;
-	pb.first = B;
-	pb.second = Y;
 
+	for (auto i = 0; i <= max(X, Y); i++)
+	{
 
-	//if (2 * C > A && 2 * C > B) {
-	if (2 * C > A + B) {
-		ans = A * X + B * Y;
-	}
-	else {
-		if (2 * C < A && 2 * C < B) {
-			ans = max(X, Y) * 2 * C;
-		}
-		else if (B > A) {
-			ans = 2 * C*Y;
-			if (X - Y > 0)ans += (X - Y)*A;
-		}
-		else {
-			ans = 2 * C*X;
-			if (Y - X > 0)ans += (Y - X)*B;
-		}
+		mincost = min(mincost, 2 * C*i + A * max((X - i), 0) + B * max((Y - i), 0));
 	}
 
-
-	cout << ans << endl;
-
+	cout << mincost << endl;
 
 	return 0;
 }
